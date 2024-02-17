@@ -162,12 +162,17 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   physics: BouncingScrollPhysics(),
                   child: Row(
-                    children: [
-                      ForecastItem(),
-                      ForecastItem(),
-                      ForecastItem(),
-                      ForecastItem(),
-                    ],
+                    children: List.generate(
+                        _forecastModel!.forecast.forecastday[0].hour.length,
+                        (index) => ForecastItem(
+                            time: _forecastModel!
+                                .forecast.forecastday[0].hour[index].time
+                                .toString(),
+                            value: _forecastModel!
+                                .forecast.forecastday[0].hour[index].tempC
+                                .toString(),
+                            isDay: _forecastModel!
+                                .forecast.forecastday[0].hour[index].isDay)),
                   ),
                 ),
               ],

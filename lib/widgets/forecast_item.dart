@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ForecastItem extends StatelessWidget {
-  const ForecastItem({super.key});
+  String time;
+  String value;
+  int isDay;
 
+  ForecastItem({required this.time, required this.value, required this.isDay});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +24,7 @@ class ForecastItem extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            "00:00",
+            this.time,
             style: TextStyle(
               color: Colors.white38,
             ),
@@ -30,14 +33,14 @@ class ForecastItem extends StatelessWidget {
             height: 8,
           ),
           Image.asset(
-            "assets/images/overcast.png",
+            "assets/images/${isDay == 1 ? "sunny" : "overcast"}.png",
             height: 30,
           ),
           SizedBox(
             height: 8,
           ),
           Text(
-            "5.5 C",
+            "$value",
             style: TextStyle(
                 color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
           ),
